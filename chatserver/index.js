@@ -27,6 +27,11 @@ io.on("connection", (socket) => {
     io.emit("message", data);
   });
 
+  socket.on("selectedValue", (data) => {
+    console.log("Received selected value from client:", data);
+    io.emit("selectedValue", data); // Broadcast selected value to all connected clients
+  });
+
   socket.on("disconnect", () => {
     console.log("Client disconnected");
   });
